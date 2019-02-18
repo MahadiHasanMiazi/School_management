@@ -15,7 +15,7 @@
 //    return view('welcome');
 //});
 
-Route::get('/', 'Home@index')->name('home.index');
-Route::get('/login', 'Home@getLogin');
-Route::post('/login', 'Home@postLogin');
+Route::get('/', 'HomeController@index')->name('home.index');
+Route::get('/login', 'HomeController@getLogin');
+Route::post('/login', 'HomeController@postLogin');
 
