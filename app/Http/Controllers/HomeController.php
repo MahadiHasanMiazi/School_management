@@ -20,12 +20,14 @@ class HomeController extends Controller
 //            'password'=>'required'
 //        ]);
 
-        $email = $request->input('emain');
+        $email = $request->input('username');
         $password = $request->input('password');
 //        return redirect()->route('home.index');
 
-        $admin = Admin::where('email', '=', $email)->first();
+
+        $admin = Admin::where('email', $email)->first();
 //        var_dump($admin);
+////        var_dump($admin);
         if($admin){
             if($password == $admin->password){
                 session(['admin'=>$admin]);
