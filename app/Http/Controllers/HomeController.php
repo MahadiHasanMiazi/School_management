@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Admin;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -15,10 +16,10 @@ class HomeController extends Controller
         return view('login');
     }
     public function postLogin(Request $request){
-//        $this->validate($request,[
-//            'email'=>'required|email|',
-//            'password'=>'required'
-//        ]);
+        $this->validate($request,[
+            'username'=>'required|email',
+            'password'=>'required'
+        ]);
 
         $email = $request->input('username');
         $password = $request->input('password');
@@ -29,7 +30,7 @@ class HomeController extends Controller
 //        var_dump($admin);
 ////        var_dump($admin);
         if($admin){
-            if($password == $admin->password){
+            if(Hash::check($password, $admin->password)){
                 session(['admin'=>$admin]);
                 return redirect()->route('home.index');
             }else{
@@ -41,4 +42,5 @@ class HomeController extends Controller
         }
 
     }
+
 }
