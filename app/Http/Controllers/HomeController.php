@@ -23,22 +23,18 @@ class HomeController extends Controller
 
         $email = $request->input('username');
         $password = $request->input('password');
-//        return redirect()->route('home.index');
-
 
         $admin = Admin::where('email', $email)->first();
-//        var_dump($admin);
-////        var_dump($admin);
         if($admin){
             if(Hash::check($password, $admin->password)){
                 session(['admin'=>$admin]);
                 return redirect()->route('home.index');
             }else{
-                echo "pass wrong";
+               return 'password does not match';
             }
 
         }else{
-            echo "something is Wrong";
+            return 'user does not exist';
         }
 
     }
