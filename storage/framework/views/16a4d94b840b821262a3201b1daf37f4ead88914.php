@@ -2,6 +2,7 @@
 <head>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link href="<?php echo e(asset('css/homeNavBar.css')); ?>" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
 
@@ -40,6 +41,7 @@
                 <li>
                     <a href="#" data-toggle="collapse" data-target="#submenu-1"><i class=" fa fas fa-university"></i> CLASSES <i class="fa fa-fw fa-angle-down pull-right"></i></a>
                     <ul id="submenu-1" class="collapse">
+                        <li><a href="#"><i class="fa fa-angle-double-right"></i> Child</a></li>
                         <li><a href="#"><i class="fa fa-angle-double-right"></i> Play</a></li>
                         <li><a href="#"><i class="fa fa-angle-double-right"></i> Nursery</a></li>
                         <li><a href="#"><i class="fa fa-angle-double-right"></i> Class 1</a></li>
