@@ -1,7 +1,7 @@
 <html>
     <head>
         
-        <link href="<?php echo e(asset('css/cost.css')); ?>" rel="stylesheet" type="text/css">
+        <link href="<?php echo e(asset('css/cost.css')); ?>" rel= "stylesheet" type="text/css">
         <script src="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     </head>
@@ -31,28 +31,28 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr id='addr0' data-id="0" class="hidden">
-                        <td data-name="name">
-                            <input type="text" name='name0'  placeholder='Name' class="form-control"/>
-                        </td>
-                        <td data-name="mail">
-                            <input type="text" name='mail0' placeholder='Email' class="form-control"/>
-                        </td>
-                        <td data-name="desc">
-                            <textarea name="desc0" placeholder="Description" class="form-control"></textarea>
-                        </td>
-                        <td data-name="sel">
-                            <select name="sel0">
-                                <option value="">Select Option</option>
-                                <option value="1">Option 1</option>
-                                <option value="2">Option 2</option>
-                                <option value="3">Option 3</option>
-                            </select>
-                        </td>
-                        <td data-name="del">
-                            <button name= "del0" class='btn btn-danger glyphicon glyphicon-remove row-remove'></button>
-                        </td>
-                    </tr>
+                        <tr id='addr0' data-id="0">
+                            <td data-name="name">
+                                <input type="text" name='name0'  placeholder='Name' class="form-control"/>
+                            </td>
+                            <td data-name="mail">
+                                <input type="text" name='mail0' placeholder='Email' class="form-control"/>
+                            </td>
+                            <td data-name="desc">
+                                <textarea name="desc0" placeholder="Description" class="form-control"></textarea>
+                            </td>
+                            <td data-name="sel">
+                                <select name="sel0">
+                                    <option value="">Select Option</option>
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                    <option value="3">Option 3</option>
+                                </select>
+                            </td>
+                            <td data-name="del">
+                                <button name= "del0" class='btn btn-danger glyphicon glyphicon-remove row-remove'></button>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
