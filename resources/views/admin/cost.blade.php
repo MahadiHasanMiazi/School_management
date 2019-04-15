@@ -11,50 +11,56 @@
     <div class="container clearfix col-md-11 col-md-offsed-2" style="margin-top: 109px;">
         <div class="row " >
             <div class="col-md-12 table-responsive" >
+                <form method="post" enctype="multipart/form-data">
+                    @csrf
                 <table class="table table-bordered table-hover table-sortable" id="tab_logic">
                     <thead>
                     <tr >
                         <th class="text-center">
-                            Name
+                            Name of Cost
                         </th>
                         <th class="text-center">
-                            Email
+                            Taka
                         </th>
                         <th class="text-center">
-                            Notes
+                            Date
                         </th>
-                        <th class="text-center">
-                            Option
-                        </th>
-                        <th class="text-center" style="border-top: 1px solid #ffffff; border-right: 1px solid #ffffff;">
-                        </th>
+                        {{--<th class="text-center">--}}
+                            {{--Option--}}
+                        {{--</th>--}}
+                        <th class="text-center" style="border-top: 1px solid #ffffff; border-right: 1px solid #ffffff;">Action</th>
                     </tr>
                     </thead>
                     <tbody>
+
+
                         <tr id='addr0' data-id="0">
                             <td data-name="name">
-                                <input type="text" name='name0'  placeholder='Name' class="form-control"/>
+                                <input type="text" name="costName[]" required placeholder='Name of cost' class="form-control"/>
                             </td>
-                            <td data-name="mail">
-                                <input type="text" name='mail0' placeholder='Email' class="form-control"/>
+                            <td data-name="Taka">
+                                <input type="number" name="taka[]" required placeholder='Taka' class="form-control"/>
                             </td>
-                            <td data-name="desc">
-                                <textarea name="desc0" placeholder="Description" class="form-control"></textarea>
+                            <td data-name="date">
+                                <input type="date" name="date[]" required placeholder="Date" class="form-control">
                             </td>
-                            <td data-name="sel">
-                                <select name="sel0">
-                                    <option value="">Select Option</option>
-                                    <option value="1">Option 1</option>
-                                    <option value="2">Option 2</option>
-                                    <option value="3">Option 3</option>
-                                </select>
-                            </td>
+                            {{--<td data-name="sel">--}}
+                                {{--<select name="sel0">--}}
+                                    {{--<option value="">Select Option</option>--}}
+                                    {{--<option value="1">Option 1</option>--}}
+                                    {{--<option value="2">Option 2</option>--}}
+                                    {{--<option value="3">Option 3</option>--}}
+                                {{--</select>--}}
+                            {{--</td>--}}
                             <td data-name="del">
-                                <button name= "del0" class='btn btn-danger glyphicon glyphicon-remove row-remove'></button>
+                                <button name= "delete" class='btn btn-danger glyphicon glyphicon-remove row-remove'></button>
                             </td>
                         </tr>
+
                     </tbody>
                 </table>
+                    <input type="submit" value="Submit">
+                </form>
             </div>
         </div>
         <a id="add_row" class="btn btn-default pull-right">Add Row</a>

@@ -8,6 +8,7 @@ use App\Admin;
 use App\Classes;
 use App\Sections;
 use App\Student_fees;
+use App\Cost;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -119,8 +120,32 @@ class AdminController extends Controller
 
     }
 
-    public function office_cost(){
+    public function get_office_cost(){
         return view('admin.cost');
+    }
+
+    public function post_office_cost(Request $request){
+        $cost_reason = $request->input('costName');
+        $amount = $request ->input('taka');
+        $date = $request->input('date');
+
+        for($i = 0; $i < count($amount); $i++) {
+            $cost = new Cost();
+
+            $cost->cost_reason = $cost_reason[$i];
+            $cost->amount = $amount[$i];
+            $cost->date = $date[$i];
+
+            $cost->save();
+        }
+
+        return redirect()->route('home.index');
+
+    }
+
+    public function total_fees_cost(){
+
+        return view('cost.total-cost');
     }
 
 }

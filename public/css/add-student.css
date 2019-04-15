@@ -18,3 +18,7 @@ input[type="date"]:focus:before,
 input[type="date"]:valid:before {
     content: "";
 }
+
+.panel-body{
+    background-color: #C0C0C0;
+}
