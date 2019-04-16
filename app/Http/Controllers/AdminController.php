@@ -126,16 +126,17 @@ class AdminController extends Controller
 
     public function post_office_cost(Request $request){
         $cost_reason = $request->input('costName');
-        $amount = $request ->input('taka');
+        $amount = $request ->input('amount');
         $date = $request->input('date');
 
-        for($i = 0; $i < count($amount); $i++) {
+//        var_dump(count($cost_reason));
+
+        for($i = 0; $i < count($cost_reason); $i++) {
             $cost = new Cost();
 
             $cost->cost_reason = $cost_reason[$i];
             $cost->amount = $amount[$i];
             $cost->date = $date[$i];
-
             $cost->save();
         }
 

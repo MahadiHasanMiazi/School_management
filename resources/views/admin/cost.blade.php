@@ -39,7 +39,7 @@
                                 <input type="text" name="costName[]" required placeholder='Name of cost' class="form-control"/>
                             </td>
                             <td data-name="Taka">
-                                <input type="number" name="taka[]" required placeholder='Taka' class="form-control"/>
+                                <input type="number" name="amount[]" required placeholder='Taka' class="form-control"/>
                             </td>
                             <td data-name="date">
                                 <input type="date" name="date[]" required placeholder="Date" class="form-control">
@@ -87,7 +87,7 @@
                 newid++;
 
                 var tr = $("<tr></tr>", {
-                    id: "addr"+newid,
+                    id: "addr0"+newid,
                     "data-id": newid
                 });
 

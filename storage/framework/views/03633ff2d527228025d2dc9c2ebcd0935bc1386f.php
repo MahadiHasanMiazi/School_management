@@ -11,7 +11,7 @@
     <div class="container clearfix col-md-11 col-md-offsed-2" style="margin-top: 109px;">
         <div class="row " >
             <div class="col-md-12 table-responsive" >
-                <form method="post" enctype="multipart/form-data">
+                <form method="post" action="" enctype="multipart/form-data">
                     <?php echo csrf_field(); ?>
                 <table class="table table-bordered table-hover table-sortable" id="tab_logic">
                     <thead>
@@ -34,12 +34,12 @@
                     <tbody>
 
 
-                        <tr id='addr0' data-id="0">
+                        <tr id='addr' data-id= "0">
                             <td data-name="name">
                                 <input type="text" name="costName[]" required placeholder='Name of cost' class="form-control"/>
                             </td>
                             <td data-name="Taka">
-                                <input type="number" name="taka[]" required placeholder='Taka' class="form-control"/>
+                                <input type="number" name="amount[]" required placeholder='Taka' class="form-control"/>
                             </td>
                             <td data-name="date">
                                 <input type="date" name="date[]" required placeholder="Date" class="form-control">
@@ -56,6 +56,7 @@
                                 <button name= "delete" class='btn btn-danger glyphicon glyphicon-remove row-remove'></button>
                             </td>
                         </tr>
+                        <a id="add_row" class="btn btn-default pull-right">Add Row</a>
 
                     </tbody>
                 </table>
@@ -63,7 +64,7 @@
                 </form>
             </div>
         </div>
-        <a id="add_row" class="btn btn-default pull-right">Add Row</a>
+
     </div>
     </div>
 
