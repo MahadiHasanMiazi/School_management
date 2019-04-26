@@ -65,17 +65,21 @@
                             </div>
                         </div><br>
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <label>Roll Number</label>
                                 <input type="number" class="form-control" name="roll_number" placeholder="Roll Number" required>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <label>Student Name</label>
                                 <input type="text" class="form-control" name="student_name" placeholder="Student Name" required>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <label>Amount</label>
                                 <input type="number" class="form-control" name="amount_of_fees" placeholder="Amount of Fees" required>
+                            </div>
+                            <div class="col-md-3">
+                                <label>Date</label>
+                                <input type="date" class="form-control" name="date" placeholder="Date" required>
                             </div>
 
                         </div>

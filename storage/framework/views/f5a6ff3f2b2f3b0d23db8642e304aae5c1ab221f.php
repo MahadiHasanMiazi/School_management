@@ -9,7 +9,7 @@
         <div class="container">
             <div class="total-accounts col-md-10 col-md-offset-1">
                 <div>
-                    <h1>Total Fees</h1>
+                    <h1>Total Fees: <?php echo e($costs); ?></h1>
                 </div><br>
                 <div>
                     <h1>Total Cost</h1>

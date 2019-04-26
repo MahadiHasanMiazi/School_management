@@ -1,169 +1,73 @@
 <html>
-    <head>
-        
-        <link href="<?php echo e(asset('css/cost.css')); ?>" rel= "stylesheet" type="text/css">
-        <script src="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-    </head>
-    <body>
-    <div id="wrapper">
-        
-    <div class="container clearfix col-md-11 col-md-offsed-2" style="margin-top: 109px;">
-        <div class="row " >
-            <div class="col-md-12 table-responsive" >
-                <form method="post" action="" enctype="multipart/form-data">
-                    <?php echo csrf_field(); ?>
-                <table class="table table-bordered table-hover table-sortable" id="tab_logic">
-                    <thead>
-                    <tr >
-                        <th class="text-center">
-                            Name of Cost
-                        </th>
-                        <th class="text-center">
-                            Taka
-                        </th>
-                        <th class="text-center">
-                            Date
-                        </th>
-                        
-                            
-                        
-                        <th class="text-center" style="border-top: 1px solid #ffffff; border-right: 1px solid #ffffff;">Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="<?php echo e(asset('css/cost.css')); ?>" rel= "stylesheet" type="text/css">
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+<div id="wrapper">
+    
+    <form method="post" enctype="multipart/form-data">
+        <?php echo csrf_field(); ?>
+    <div id="quantity_input" class="col-md-10 col-md-offset-2" style="margin-top: 40px;">
+
+        <div class="row">
 
 
-                        <tr id='addr' data-id= "0">
-                            <td data-name="name">
-                                <input type="text" name="costName[]" required placeholder='Name of cost' class="form-control"/>
-                            </td>
-                            <td data-name="Taka">
-                                <input type="number" name="amount[]" required placeholder='Taka' class="form-control"/>
-                            </td>
-                            <td data-name="date">
-                                <input type="date" name="date[]" required placeholder="Date" class="form-control">
-                            </td>
-                            
-                                
-                                    
-                                    
-                                    
-                                    
-                                
-                            
-                            <td data-name="del">
-                                <button name= "delete" class='btn btn-danger glyphicon glyphicon-remove row-remove'></button>
-                            </td>
-                        </tr>
-                        <a id="add_row" class="btn btn-default pull-right">Add Row</a>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label mb-10">Cost of Reason</label>
+                    <div class="input-group">
 
-                    </tbody>
-                </table>
-                    <input type="submit" value="Submit">
-                </form>
+                        <input  type="text" name="CostReason[]" class="form-control" id="size" placeholder="">
+                    </div>
+                </div>
             </div>
+
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label mb-10">Amount</label>
+                    <div class="input-group">
+
+                        <input required="" type="number" name="amount[]" class="form-control" id="color" placeholder="">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label mb-10">Quatity</label>
+                    <div class="input-group">
+                        <input required="" type="date" name="date[]" class="form-control" id="quantity" placeholder="">
+                    </div>
+                </div>
+            </div>
+
+
+
         </div>
 
+
     </div>
-    </div>
+    <input type="submit" value="Submit" class="btn-primary col-md-offset-2">
+    </form>
+    <button type="button" class="btn btn-success btn-icon left-icon col-md-offset-8 " onclick="addNewDetailsRow()">Add New Size</button>
 
 
+</div>
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $("#add_row").on("click", function() {
-                // Dynamic Rows Code
-
-                // Get max row id and set new id
-                var newid = 0;
-                $.each($("#tab_logic tr"), function() {
-                    if (parseInt($(this).data("id")) > newid) {
-                        newid = parseInt($(this).data("id"));
-                    }
-                });
-                newid++;
-
-                var tr = $("<tr></tr>", {
-                    id: "addr"+newid,
-                    "data-id": newid
-                });
-
-                // loop through each td and create new elements with name of newid
-                $.each($("#tab_logic tbody tr:nth(0) td"), function() {
-                    var cur_td = $(this);
-
-                    var children = cur_td.children();
-
-                    // add new td and element if it has a nane
-                    if ($(this).data("name") != undefined) {
-                        var td = $("<td></td>", {
-                            "data-name": $(cur_td).data("name")
-                        });
-
-                        var c = $(cur_td).find($(children[0]).prop('tagName')).clone().val("");
-                        c.attr("name", $(cur_td).data("name") + newid);
-                        c.appendTo($(td));
-                        td.appendTo($(tr));
-                    } else {
-                        var td = $("<td></td>", {
-                            'text': $('#tab_logic tr').length
-                        }).appendTo($(tr));
-                    }
-                });
-
-                // add delete button and td
-                /*
-                $("<td></td>").append(
-                    $("<button class='btn btn-danger glyphicon glyphicon-remove row-remove'></button>")
-                        .click(function() {
-                            $(this).closest("tr").remove();
-                        })
-                ).appendTo($(tr));
-                */
-
-                // add the new row
-                $(tr).appendTo($('#tab_logic'));
-
-                $(tr).find("td button.row-remove").on("click", function() {
-                    $(this).closest("tr").remove();
-                });
-            });
-
-
-
-
-            // Sortable Code
-            var fixHelperModified = function(e, tr) {
-                var $originals = tr.children();
-                var $helper = tr.clone();
-
-                $helper.children().each(function(index) {
-                    $(this).width($originals.eq(index).width())
-                });
-
-                return $helper;
-            };
-
-            $(".table-sortable tbody").sortable({
-                helper: fixHelperModified
-            }).disableSelection();
-
-            $(".table-sortable thead").disableSelection();
-
-
-
-            $("#add_row").trigger("click");
-        });
-    </script>
-    </body>
+<!-- Then include bootstrap js -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<script src="<?php echo e(asset('js/AddCost.js')); ?>"></script>
+</body>
 </html>
-
-
-
 
 
 <?php echo $__env->make('layout.side-bar', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

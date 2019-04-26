@@ -39,4 +39,9 @@ class HomeController extends Controller
 
     }
 
+    public function logout(){
+        session()->forget('admin');
+        return redirect()->route('admin.login');
+    }
+
 }

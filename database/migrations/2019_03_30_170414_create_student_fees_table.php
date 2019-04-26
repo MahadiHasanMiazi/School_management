@@ -22,6 +22,7 @@ class CreateStudentFeesTable extends Migration
             $table->string('month_of_fees');
             $table->string('year');
             $table->string('amount');
+            $table->string('date');
             $table->timestamps();
         });
     }

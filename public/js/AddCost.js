@@ -7,10 +7,9 @@ function addNewDetailsRow() {
         "\n" +
         "                                                    <div class=\"col-md-3\">\n" +
         "                                                        <div class=\"form-group\">\n" +
-        "                                                            <label class=\"control-label mb-10\">Size</label>\n" +
+        "                                                            <label class=\"control-label mb-10\">Cost of Reason</label>\n" +
         "                                                            <div class=\"input-group\">\n" +
-        "                                                                <div class=\"input-group-addon\"><i class=\"ti-cut\"></i></div>\n" +
-        "                                                                <input type=\"text\"  name=\"size[]\" class=\"form-control\" id=\"size\" placeholder=\"\">\n" +
+        "                                                                <input type=\"text\"  name=\"CostReason[]\" class=\"form-control\" id=\"size\" placeholder=\"\">\n" +
         "                                                            </div>\n" +
         "                                                        </div>\n" +
         "                                                    </div>\n" +
@@ -18,10 +17,9 @@ function addNewDetailsRow() {
         "\n" +
         "                                                    <div class=\"col-md-3\">\n" +
         "                                                        <div class=\"form-group\">\n" +
-        "                                                            <label class=\"control-label mb-10\">Color</label>\n" +
+        "                                                            <label class=\"control-label mb-10\">Amount</label>\n" +
         "                                                            <div class=\"input-group\">\n" +
-        "                                                                <div class=\"input-group-addon\"><i class=\"ti-cut\"></i></div>\n" +
-        "                                                                <input type=\"text\" required name=\"color[]\" class=\"form-control\" id=\"color\" placeholder=\"\">\n" +
+        "                                                                <input type=\"number\" required name=\"amount[]\" class=\"form-control\" id=\"color\" placeholder=\"\">\n" +
         "                                                            </div>\n" +
         "                                                        </div>\n" +
         "                                                    </div>\n" +
@@ -29,10 +27,9 @@ function addNewDetailsRow() {
         "\n" +
         "                                                    <div class=\"col-md-3\">\n" +
         "                                                        <div class=\"form-group\">\n" +
-        "                                                            <label class=\"control-label mb-10\">Quatity</label>\n" +
+        "                                                            <label class=\"control-label mb-10\">Date</label>\n" +
         "                                                            <div class=\"input-group\">\n" +
-        "                                                                <div class=\"input-group-addon\"><i class=\"ti-cut\"></i></div>\n" +
-        "                                                                <input type=\"text\" required name=\"total_quantity[]\" class=\"form-control\" id=\"quantity\" placeholder=\"\">\n" +
+        "                                                                <input type=\"date\" required name=\"date[]\" class=\"form-control\" id=\"quantity\" placeholder=\"\">\n" +
         "                                                            </div>\n" +
         "                                                        </div>\n" +
         "                                                    </div>\n" +

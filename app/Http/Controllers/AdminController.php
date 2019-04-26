@@ -71,6 +71,7 @@ class AdminController extends Controller
         $name = $request->input('student_name');
         $amount = $request->input('amount_of_fees');
         $year = $request->input('year');
+        $date = $request->input('date');
 
 
         $this->
@@ -81,7 +82,8 @@ class AdminController extends Controller
             'roll_number'    => 'required',
             'student_name'   => 'required',
             'amount_of_fees' => 'required',
-            'year'           => 'required'
+            'year'           => 'required',
+            'date'           => 'required'
 
         ]);
 
@@ -109,6 +111,7 @@ class AdminController extends Controller
             $fees->month_of_fees = $month;
             $fees->year = $year;
             $fees->amount = $amount;
+            $fees->date = $date;
 
             if($fees->save()){
                 return redirect()->route('home.index');
@@ -125,29 +128,73 @@ class AdminController extends Controller
     }
 
     public function post_office_cost(Request $request){
-        $cost_reason = $request->input('costName');
+        $cost_reason = $request->input('CostReason');
         $amount = $request ->input('amount');
         $date = $request->input('date');
 
-//        var_dump(count($cost_reason));
+//        var_dump(count($amount));
 
-        for($i = 0; $i < count($cost_reason); $i++) {
+        for ($i = 0; $i < count($amount); $i++) {
             $cost = new Cost();
-
             $cost->cost_reason = $cost_reason[$i];
             $cost->amount = $amount[$i];
             $cost->date = $date[$i];
             $cost->save();
         }
-
         return redirect()->route('home.index');
 
     }
 
-    public function total_fees_cost(){
 
-        return view('cost.total-cost');
+    public function cost_list(){
+        $costs = Cost::orderBy('id', 'DESC')->paginate(15);
+        return view('cost.costList')
+            ->with('costs', $costs)
+            ->with("start_date", "")
+            ->with("end_date","");
+
     }
+
+    public function cost_list_search_by_date(Request $request){
+        $start_date = $request->input('start_date');
+        $end_date = $request->input('end_date');
+        $costs  = Cost::whereBetween('date',[$start_date, $end_date])->paginate(15);
+        return view('cost.costList')
+            ->with('costs', $costs)
+            ->with("start_date", $start_date)
+            ->with("end_date", $end_date);
+    }
+
+    public function get_total_accounts(){
+        $cost = Cost::all()->sum('amount');
+        $fees = Student_fees::all()->sum('amount');
+        $sum = $fees - $cost ;
+
+        return view('admin.total-cost-profit', ['fees' => $fees])
+            ->with("cost", $cost)
+            ->with("sum", $sum)
+            ->with("start_date", "")
+            ->with("end_date", "");
+    }
+
+    public function total_account_by_date(Request $request){
+        $start_date = $request->input("start_date");
+        $end_date = $request->input("end_date");
+
+        $cost = Cost::whereBetween('date', [$start_date, $end_date])->sum('amount');
+        $fees = Student_fees::whereBetween('date', [$start_date, $end_date])->sum('amount');
+        $sum = $fees - $cost;
+//        var_dump($cost);
+        return view('admin.total-cost-profit', ['fees' => $fees])
+            ->with("cost", $cost)
+            ->with("sum", $sum)
+            ->with("start_date", $start_date)
+            ->with("end_date", $end_date);
+
+
+
+    }
+
 
 }
 

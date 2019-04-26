@@ -74,7 +74,7 @@
 
                             </div>
 
-                            <input type="submit" value="Register" class="btn btn-info btn-block">
+                            <input type="submit" value="Add Teacher" class="btn btn-info btn-block">
 
                         </form>
                     </div>

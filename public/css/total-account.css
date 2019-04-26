@@ -1,0 +1,12 @@
+.total-accounts{
+    width: 800px;
+    height: 430px;
+    background-color:#E0E0E0;
+    margin-top: 5%;
+    box-shadow: 10px 10px 5px gray;
+
+}
+.under-body{
+    padding-top: 5%;
+    padding-left: 3%;
+}

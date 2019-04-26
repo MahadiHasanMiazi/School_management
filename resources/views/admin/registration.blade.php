@@ -1,10 +1,11 @@
 <html>
     <head>
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <link href="{{asset('css/adminRegistration.css')}}" rel="stylesheet" type="text/css">
+
     </head>
 
     <body>
+    <div id="wrapper">
+        @extends("layout.side-bar")
         <div class="container">
             <div class="row centered-form">
                 <div class="col-xs-12 col-sm-6 col-md-8 col-sm-offset-2 col-md-offset-2">
@@ -53,6 +54,8 @@
                 </div>
             </div>
         </div>
+    </div>
+
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     </body>

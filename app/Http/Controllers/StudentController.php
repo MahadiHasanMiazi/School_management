@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Students;
+use App\Student_fees;
 
 class StudentController extends Controller
 {
@@ -30,5 +31,22 @@ class StudentController extends Controller
       if($student->save()){
           return redirect()->route('home.index');
       }
+    }
+
+    public function students_fees_list(Request $request, $class){
+        $fees = Student_fees::where('class', $class);
+        return view('student.students-fees-list')
+            ->with('fees', $fees)
+            ->with("start_date", "")
+            ->with("end_date", "");
+    }
+    public function students_fees_list_search_by_date(Request $request){
+        $start_date = $request->input('start_date');
+        $end_date = $request->input('end_date');
+        $fees = Student_fees::whereBetween('date', [$start_date, $end_date]);
+        return view('student.students-fees-list')
+            ->with('fees', $fees)
+            ->with("start_date", $start_date)
+            ->with("end_date", $end_date);
     }
 }
