@@ -27,6 +27,7 @@
                     <th>Subject</th>
                     <th>Date of Birth</th>
                     <th>Mobile number</th>
+                    <th>Image</th>
                     <th class="text-center">Action</th>
                 </tr>
                 </thead>
@@ -36,6 +37,7 @@
                     <td>{{$teacher->subject}}</td>
                     <td>{{$teacher->dob}}</td>
                     <td>{{$teacher->mobile}}</td>
+                    <td><img src="{{asset($teacher->image)}}" width="50"></td>
                     <td class="text-center"><a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a href="{{route('teacher.delete', $teacher->id)}}" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Delete</a> <a class='btn btn-success btn-xs' href="{{route('teacher.details', $teacher->id)}}"><span class="glyphicon glyphicon-user"></span> Details</a></td>
                 </tr>
                     @endforeach

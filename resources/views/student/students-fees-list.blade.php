@@ -7,18 +7,28 @@
 <div id="wrapper">
 
     @extends('layout.side-bar')
-    <div class="container">
+    <div class="container" style="margin-top: -5%;">
         <div class="row col-md-10 col-md-offset-1 custyle student-list">
             <div class="topnav">
-                <h2>Students Fees</h2>
-                <form method="post" action="">
-                    @csrf
+                <div class="row">
+                    <div style="background-color: #47A447; margin-top: -1%;">
+                        <h2 style="text-align: center; color: white;">Students Fees</h2>
+                    </div>
+                    <div class="col-md-offset-10">
+                        <button class="btn btn-info" onclick="HTMLtoPDF()">Download PDF</button>
+                    </div>
+
+                </div>
                 {{--<div class="search-container">--}}
-                    {{--<form action="/action_page.php">--}}
-                        {{--<input type="text" placeholder="Search.." name="search">--}}
-                        {{--<button type="submit"><i class="fa fa-search"></i></button>--}}
+                    {{--<form>--}}
+                        {{--@csrf--}}
+                         {{--<input type="text" placeholder="Search..." id="search" onkeyup="searchByAnything()" name="search">--}}
+                    {{--<button type="submit"><i class="fa fa-search"></i></button>--}}
                     {{--</form>--}}
                 {{--</div>--}}
+                <form method="post" action="" style="margin-top: -3%;">
+                    @csrf
+
                 <div class="form-group col-md-3">
                     <label>Start Date</label>
                     <input type="date" class="form-control" value="{{$start_date}}" placeholder="Start Date" name="start_date">
@@ -28,13 +38,13 @@
                     <input type="date" class="form-control" value="{{$end_date}}" placeholder="End Date" name="end_date">
                 </div>
                 <div class="form-group col-md-2">
-                    <input type="submit" class="btn-success" style="margin-top: 21%;" value="Search">
+                    <input type="submit" class="btn btn-success" style="margin-top: 21%;" value="Search">
                 </div>
                 </form>
             </div>
+            <div id="HTMLtoPDF">
             <table class="table table-striped custab">
                 <thead>
-                {{--                <a href="{{route('add.teacher')}}" class="btn btn-primary btn-xs pull-right"><b>+</b> Add Teacher</a>--}}
                 <tr>
                     <th>Roll Number</th>
                     <th>Name</th>
@@ -43,33 +53,62 @@
                     <th>Month of Fees </th>
                     <th>Year </th>
                     <th>Amount </th>
-                    {{--<th>Mobile number</th>--}}
-                    {{--<th class="text-center">Action</th>--}}
                 </tr>
                 </thead>
+                <tbody>
                     @foreach($fees as $fee)
                     <tr>
-                        <td>{{$fee->roll_no}}</td>
+                        <td>{{$fee->roll_number}}</td>
                         <td>{{$fee->name}}</td>
                         <td>{{$fee->class}}</td>
                         <td>{{$fee->section}}</td>
                         <td>{{$fee->month_of_fees}}</td>
                         <td>{{$fee->year}}</td>
                         <td>{{$fee->amount}}</td>
-                        {{--<td></td>--}}
-                        {{--<td class="text-center"><a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a href="{{route('teacher.delete', $teacher->id)}}" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Delete</a> <a class='btn btn-success btn-xs' href="{{route('teacher.details', $teacher->id)}}"><span class="glyphicon glyphicon-user"></span> Details</a></td>--}}
+
                     </tr>
                         @endforeach
-
-
-
+                </tbody>
 
 
             </table>
+            </div>
 
         </div>
     </div>
 
 </div>
+
+<script>
+    function searchByAnything() {
+        var value = $("#search").val();
+
+        $.ajax({
+            type:'GET',
+            url: 'fees/list/search',
+            data: {
+                value: value,
+
+            },
+            success: function(result){
+                console.log(result)
+                var costs = '';
+                // result.forEach(function (cost) {
+                //     costs += " <tr>\n" +
+                //         "                        <td>"+cost.cost_reason+"</td>\n" +
+                //         "                        <td>"+cost.amount+"</td>\n" +
+                //         "                        <td>"+cost.date+"</td>\n" +
+                //         "                    </tr>";
+                //
+                // });
+                // $("#show_costs").html(costs);
+
+            }
+
+
+        });
+
+    }
+</script>
 </body>
 </html>

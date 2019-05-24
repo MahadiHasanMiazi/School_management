@@ -13,6 +13,11 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading">
+                    @if(session()->has('message.level'))
+                        <div class="alert alert-{{ session('message.level') }}">
+                            {!! session('message.content') !!}
+                        </div>
+                    @endif
                     <h3 class="panel-title"><b>Students Fees</b></h3>
                 </div>
                 <div class="panel-body">
@@ -31,13 +36,9 @@
                             </div>
                             <div class="col-md-3">
                                 <label>Section</label>
-                                <select class="form-control" name="selectSection" id="selectSection" required>
+                                <select class="form-control" name="selectSection" id="selectSection">
                                     <option>Section</option>
-                                    {{--<option>Rose</option>--}}
-                                    {{--<option>Play</option>--}}
-                                    {{--@foreach($sections as $section)--}}
-                                        {{--<option>{{$section['name']}}</option>--}}
-                                    {{--@endforeach--}}
+
                                 </select>
                             </div>
                             <div class="col-md-3">
@@ -105,7 +106,7 @@
         var classValue = $(this).val();
         $.ajax({
             type: 'GET',
-            url: "http://127.0.0.1:8000/students/class",
+            url: "/class",
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
@@ -114,7 +115,6 @@
 
             },
             success: function(result){
-                // console.log(result);
                 var sectionValues = '';
                 result.forEach(function (sectionValue) {
 

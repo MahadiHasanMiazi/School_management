@@ -15,8 +15,7 @@
                         </div>
                         <div class="panel-body">
                             <form method="post" action="#" enctype="multipart/form-data">
-                                <?php echo e(csrf_field()); ?>
-
+                                <?php echo csrf_field(); ?>
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
@@ -37,12 +36,12 @@
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password" required>
+                                            <input type="password" name="password" id="password" minlength="6" class="form-control input-sm" placeholder="Password" required>
                                         </div>
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password" required>
+                                            <input type="password" name="password_confirmation" minlength="6" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password" required>
                                         </div>
                                     </div>
                                 </div>

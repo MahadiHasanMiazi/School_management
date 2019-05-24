@@ -13,7 +13,12 @@
 
                         <div class="col-sm-6 col-md-8">
                             <h3 style="color: red">Are you sure? Do you want to delete this entity</h3>
-                            <h4 style="text-align: center">{{$teacher->name}}</h4><br>
+                            <div style="margin-left: 10%;">
+                                <img src="{{asset($teacher->image)}}" style="width: 120px; height: 120px; border-radius: 50%;">
+                            </div>
+                            <div>
+                                <h2 style="margin-left: 10%;">{{$teacher->name}}</h2><br>
+                            </div>
                             <div class="col-md-12">
                                 <label class="col-md-3">Subject</label>
                                 <label class="col-md-1">:</label>
@@ -53,7 +58,7 @@
                             <br>
 
                             <div class="col-md-2 col-md-offset-2">
-                                <a href="{{route('confirm.delete', $teacher->id)}}" class="btn btn-danger btn-xs">Confirm Delete</a>
+                                <a href="{{route('confirm.delete', $teacher->id)}}" class="btn btn-danger">Confirm Delete</a>
 
                             </div>
 

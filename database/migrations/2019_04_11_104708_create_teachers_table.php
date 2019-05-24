@@ -22,6 +22,7 @@ class CreateTeachersTable extends Migration
             $table->string('salary');
             $table->string('mobile');
             $table->string('gender');
+            $table->string('image');
             $table->timestamps();
         });
     }

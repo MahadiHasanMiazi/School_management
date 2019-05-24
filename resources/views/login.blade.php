@@ -52,7 +52,7 @@
         <form method="post" action="#" enctype="multipart/form-data">
             {{ csrf_field() }}
             <input type="text" id="login" class="fadeIn second" name="username" placeholder="Username" required>
-            <input type="text" id="password" class="fadeIn third" name="password" placeholder="Password" required>
+            <input type="text" id="password" class="fadeIn third" name="password"  placeholder="Password" required>
             <input type="submit" class="fadeIn fourth" value="Log In">
         </form>
 

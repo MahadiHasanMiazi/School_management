@@ -3,6 +3,7 @@
     <div class="container">
         <div class="total-accounts col-md-10 col-md-offset-2">
             <div class="under-body">
+                <button class="btn btn-info col-md-offset-10" onclick="HTMLtoPDF()">Download Pdf</button>
                 <form method="post" action="">
                     <?php echo csrf_field(); ?>
                 <div class="row">
@@ -19,18 +20,20 @@
                     </div>
                 </div>
                 </form>
-                <div class="row ">
-                    <h1 class="col-md-6">Total Fees: </h1>
-                    <h1 class="col-md-3"><?php echo e($fees); ?></h1>
-                </div><br>
+                <div id="HTMLtoPDF">
+                    <div class="row ">
+                        <h1 class="col-md-6">Total Fees: </h1>
+                        <h1 class="col-md-3"><?php echo e($fees); ?></h1>
+                    </div><br>
 
-                <div class="row ">
-                    <h1 class="col-md-6">Total Cost: </h1>
-                    <h1 class="col-md-3"><?php echo e($cost); ?></h1>
-                </div><hr>
-                <div class="row ">
-                    <h1 class="col-md-6">Total Profit: </h1>
-                    <h1 class="col-md-3"><?php echo e($sum); ?></h1>
+                    <div class="row ">
+                        <h1 class="col-md-6">Total Cost: </h1>
+                        <h1 class="col-md-3"><?php echo e($cost); ?></h1>
+                    </div><hr>
+                    <div class="row ">
+                        <h1 class="col-md-6">Total Profit: </h1>
+                        <h1 class="col-md-3"><?php echo e($sum); ?></h1>
+                    </div>
                 </div>
             </div>
         </div>

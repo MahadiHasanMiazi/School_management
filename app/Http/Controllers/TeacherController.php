@@ -21,6 +21,20 @@ class TeacherController extends Controller
     public function post_add_teacher(Request $request){
         $teacher = new Teacher();
 
+        $this->
+        validate($request,
+        [
+            'TeacherImage' => 'max:500000'
+        ],
+            [
+                'TeacherImage.max' => 'Please upload picture less then 5 MB'
+            ]);
+
+        $picture = $request->file('TeacherImage');
+        $file_name = str_random(30) . sha1(time()) . '.' . $picture->getClientOriginalExtension();
+        $picture->move(public_path('images'), $file_name);
+        $teacher->image = 'images/' . $file_name;
+
         $teacher->name =  $request->input('teacher_name');
         $teacher->subject =  $request->input('subject');
         $teacher->dob =  $request->input('dob');
@@ -28,6 +42,7 @@ class TeacherController extends Controller
         $teacher->salary =  $request->input('monthly_salary');
         $teacher->mobile =  $request->input('mobile_number');
         $teacher->gender =  $request->input('gender');
+
 
         if($teacher->save()){
             return redirect()->route('home.index');

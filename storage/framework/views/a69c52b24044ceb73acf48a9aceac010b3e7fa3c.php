@@ -1,16 +1,20 @@
-<!------ Include the above in your HEAD tag ---------->
 <div id="wrapper">
     
 <div class="container">
     <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-6 col-md-offset-3" style="margin-top: 5%;">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-md-offset-3 body" style="margin-top: 5%;">
             <div class="well well-sm">
                 <div class="row">
                     
                         
                     
                     <div class="col-sm-6 col-md-8">
-                        <h4 style="text-align: center"><?php echo e($teacher->name); ?></h4><br>
+                        <div style="margin-left: 10%;">
+                            <img src="<?php echo e(asset($teacher->image)); ?>" style="width: 120px; height: 120px; border-radius: 50%;">
+                        </div>
+                        <div>
+                            <h2 style="margin-left: 10%;"><?php echo e($teacher->name); ?></h2><br>
+                        </div>
                         <div class="col-md-12">
                             <label class="col-md-3">Subject</label>
                             <label class="col-md-1">:</label>
