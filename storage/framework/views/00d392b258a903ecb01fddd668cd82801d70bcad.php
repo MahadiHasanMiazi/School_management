@@ -20,11 +20,11 @@
 
                 </div>
                 
-                    
-                        
-                         
-                    
-                    
+                
+                
+                
+                
+                
                 
                 <div class="row">
                     <div >
@@ -46,53 +46,54 @@
                         </form>
                     </div>
 
-
+                    <form>
+                        <?php echo csrf_field(); ?>
                         <div class="col-md-3" style="margin-top: 1%;">
                             <input type="hidden" value="<?php echo e($class); ?>" id="className" name="className">
 
-                            <select class="form-control" name="selectClass" id="selectClass"  onchange="javascript:handleSelect(this)">
+                            <select class="form-control" name="selectClass" style="margin-top: 5%;" id="selectClass"  onchange="javascript:handleSelect(this)">
                                 <option>Select Section</option>
                                 <?php $__currentLoopData = $sections; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $section): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <option value="<?php echo e($section->name); ?>"><?php echo e($section->name); ?></option>
+                                    <option value="<?php echo e($section->name); ?>"><?php echo e($section->name); ?></option>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </select>
 
                         </div>
-
+                    </form>
                 </div>
 
 
             </div>
             <div id="HTMLtoPDF" style="margin-top: -3%;">
-            <table class="table table-striped custab">
-                <thead>
-                <tr>
-                    <th>Roll Number</th>
-                    <th>Name</th>
-                    <th>Class </th>
-                    <th>Section </th>
-                    <th>Month of Fees </th>
-                    <th>Year </th>
-                    <th>Amount </th>
-                </tr>
-                </thead>
-                <tbody>
-                    <?php $__currentLoopData = $fees; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $fee): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <table class="table table-striped custab">
+                    <thead>
                     <tr>
-                        <td><?php echo e($fee->roll_number); ?></td>
-                        <td><?php echo e($fee->name); ?></td>
-                        <td><?php echo e($fee->class); ?></td>
-                        <td><?php echo e($fee->section); ?></td>
-                        <td><?php echo e($fee->month_of_fees); ?></td>
-                        <td><?php echo e($fee->year); ?></td>
-                        <td><?php echo e($fee->amount); ?></td>
-
+                        <th>Roll Number</th>
+                        <th>Name</th>
+                        <th>Class </th>
+                        <th>Section </th>
+                        <th>Month of Fees </th>
+                        <th>Year </th>
+                        <th>Amount </th>
                     </tr>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                </tbody>
+                    </thead>
+                    <tbody>
+                    <?php $__currentLoopData = $fees; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $fee): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <tr>
+                            <td><?php echo e($fee->roll_number); ?></td>
+                            <td><?php echo e($fee->name); ?></td>
+                            <td><?php echo e($fee->class); ?></td>
+                            <td><?php echo e($fee->section); ?></td>
+                            <td><?php echo e($fee->month_of_fees); ?></td>
+                            <td><?php echo e($fee->year); ?></td>
+                            <td><?php echo e($fee->amount); ?></td>
+
+                        </tr>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </tbody>
 
 
-            </table>
+                </table>
             </div>
 
         </div>

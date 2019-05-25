@@ -26,23 +26,44 @@
                     {{--<button type="submit"><i class="fa fa-search"></i></button>--}}
                     {{--</form>--}}
                 {{--</div>--}}
-                <form method="post" action="" style="margin-top: -3%;">
-                    @csrf
+                <div class="row">
+                    <div >
 
-                <div class="form-group col-md-3">
-                    <label>Start Date</label>
-                    <input type="date" class="form-control" value="{{$start_date}}" placeholder="Start Date" name="start_date">
+                        <form method="post" action="" style="margin-top: -3%;">
+                            @csrf
+
+                            <div class="form-group col-md-3">
+                                <label>Start Date</label>
+                                <input type="date" class="form-control" value="{{$start_date}}" placeholder="Start Date" name="start_date">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>End Date</label>
+                                <input type="date" class="form-control" value="{{$end_date}}" placeholder="End Date" name="end_date">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <input type="submit" class="btn btn-success" style="margin-top: 21%;" value="Search">
+                            </div>
+                        </form>
+                    </div>
+
+
+                        <div class="col-md-3" style="margin-top: 1%;">
+                            <input type="hidden" value="{{$class}}" id="className" name="className">
+
+                            <select class="form-control" name="selectClass" id="selectClass"  onchange="javascript:handleSelect(this)">
+                                <option>Select Section</option>
+                                @foreach($sections as $section)
+                                <option value="{{$section->name}}">{{$section->name}}</option>
+                                @endforeach
+                            </select>
+
+                        </div>
+
                 </div>
-                <div class="form-group col-md-3">
-                    <label>End Date</label>
-                    <input type="date" class="form-control" value="{{$end_date}}" placeholder="End Date" name="end_date">
-                </div>
-                <div class="form-group col-md-2">
-                    <input type="submit" class="btn btn-success" style="margin-top: 21%;" value="Search">
-                </div>
-                </form>
+
+
             </div>
-            <div id="HTMLtoPDF">
+            <div id="HTMLtoPDF" style="margin-top: -3%;">
             <table class="table table-striped custab">
                 <thead>
                 <tr>
@@ -108,6 +129,12 @@
 
         });
 
+    }
+
+    function handleSelect(elm)
+    {
+        var className = $("#className").val();
+        window.location = '/student/fees/list/'+className + '/' + elm.value;
     }
 </script>
 </body>

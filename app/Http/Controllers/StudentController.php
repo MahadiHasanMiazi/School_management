@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Students;
 use App\Student_fees;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
 class StudentController extends Controller
@@ -45,20 +46,72 @@ class StudentController extends Controller
 
     public function students_fees_list(Request $request, $class){
 //        session(['class'=>$class]);
+        $section = DB::select("
+                                        Select classes.*, sections.id, sections.class_id,sections.name  from `classes`
+                                        left join `sections` on classes.id = sections.class_id
+                                        where classes.name = '$class'");
         $fees = Student_fees::where('class', $class)->get();
         return view('student.students-fees-list')
             ->with('fees', $fees)
             ->with("start_date", "")
-            ->with("end_date", "");
+            ->with("end_date", "")
+            ->with("sections", $section)
+            ->with("class", $class);
     }
-    public function students_fees_list_search_by_date(Request $request){
+    public function students_fees_list_by_section(Request $request, $class, $section){
+        $sections = DB::select("
+                                        Select classes.*, sections.id, sections.class_id,sections.name  from `classes`
+                                        left join `sections` on classes.id = sections.class_id
+                                        where classes.name = '$class'");
+
+        $fees = Student_fees::where('class', $class)
+            ->where('section', $section)
+            ->get();
+
+        return view('student.student-fees-list-by-section')
+            ->with('fees', $fees)
+            ->with("start_date", "")
+            ->with("end_date", "")
+            ->with("sections", $sections)
+            ->with("class", $class);
+
+
+
+    }
+    public function students_fees_list_by_section_by_date(Request $request, $class, $section){
         $start_date = $request->input('start_date');
         $end_date = $request->input('end_date');
-        $fees = Student_fees::whereBetween('date', [$start_date, $end_date]);
+        $sections = DB::select("
+                                        Select classes.*, sections.id, sections.class_id,sections.name  from `classes`
+                                        left join `sections` on classes.id = sections.class_id
+                                        where classes.name = '$class'");
+        $fees = Student_fees::whereBetween('date', [$start_date, $end_date])
+                            ->where('class', $class)
+                            ->where('section', $section)
+                            ->get();
         return view('student.students-fees-list')
             ->with('fees', $fees)
             ->with("start_date", $start_date)
-            ->with("end_date", $end_date);
+            ->with("end_date", $end_date)
+            ->with("class", $class)
+            ->with("sections", $sections);
+
+    }
+    public function students_fees_list_search_by_date(Request $request, $class){
+        $section = DB::select("
+                                        Select classes.*, sections.id, sections.class_id,sections.name  from `classes`
+                                        left join `sections` on classes.id = sections.class_id
+                                        where classes.name = '$class'");
+        $start_date = $request->input('start_date');
+        $end_date = $request->input('end_date');
+        $fees = Student_fees::whereBetween('date', [$start_date, $end_date])
+                                ->where('class', $class)->get();
+        return view('student.student-fees-list-by-section')
+            ->with('fees', $fees)
+            ->with("start_date", $start_date)
+            ->with("end_date", $end_date)
+            ->with("sections", $section)
+            ->with("class", $class);
     }
 
 

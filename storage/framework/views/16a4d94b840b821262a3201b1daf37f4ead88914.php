@@ -74,13 +74,7 @@
                     <a href="#" data-toggle="collapse" data-target="#submenu-2"><i class="fa fa-fw fa-star"></i>  Students fees list <i class="fa fa-fw fa-angle-down pull-right"></i></a>
                     <ul id="submenu-2" class="collapse">
                         <li><a href="<?php echo e(route('fees.list', "child")); ?>"><i class="fa fa-angle-double-right"></i> Child</a></li>
-                        <li><a href="#" data-toggle="collapse" data-target="#sub_submenu-1"><i class="fa fa-angle-double-right"></i> Play<i class="fa fa-fw fa-angle-down pull-right"></i></a></li>
-                        <ul id="sub_submenu-1" class="collapse">
-                            <li><a href="#"><i class="fa fa-angle-double-right"></i>Sun</a></li>
-                            <li><a href="#"><i class="fa fa-angle-double-right"></i>Moon</a></li>
-                            <li><a href="#"><i class="fa fa-angle-double-right"></i>Star</a></li>
-                            <li><a href="#"><i class="fa fa-angle-double-right"></i>Sky</a></li>
-                        </ul>
+                        <li><a href="<?php echo e(route('fees.list', "play")); ?>"><i class="fa fa-angle-double-right"></i> Play</a></li>
                         <li><a href="<?php echo e(route('fees.list', "nursery")); ?>"><i class="fa fa-angle-double-right"></i> Nursery</a></li>
                         <li><a href="<?php echo e(route('fees.list', "one")); ?>"><i class="fa fa-angle-double-right"></i> Class 1</a></li>
                         <li><a href="<?php echo e(route('fees.list', "two")); ?>"><i class="fa fa-angle-double-right"></i> Class 2</a></li>

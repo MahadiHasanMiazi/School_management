@@ -54,6 +54,9 @@ Route::group(['middleware' => 'CheckLogin'], function (){
     Route::get('cost/search', 'AdminController@search');
     Route::get('fees/list/search', 'StudentController@searchByNameOrId');
 
+    Route::get('/student/fees/list/{class}/{section}', 'StudentController@students_fees_list_by_section')->name('fees.list.section');
+    Route::post('/student/fees/list/{class}/{section}', 'StudentController@students_fees_list_by_section_by_date');
+
     Route::get('/logout', 'HomeController@logout')->name('admin.logout');
 
 });
